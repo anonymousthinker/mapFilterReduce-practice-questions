@@ -258,72 +258,232 @@ const capitalizedFirstLettersOf = function (strings) {
 };
 
 // find word lengths in ["apple pie", "banana split"] => [[5, 3], [6, 5]]
-const wordLengthsOf = function (strings) { };
+
+const wordLengthsOf = function (strings) {
+  const wordLengths = strings.map(function (string) {
+    const words = string.split(" ");
+    return words.map(function (word) {
+      return word.length;
+    });
+  });
+
+  return wordLengths;
+};
 
 // flatten nested arrays of [[1, [2, 3]], [4, [5, 6]]] => [[1, 2, 3], [4, 5, 6]]
-const flattenedArraysOf = function (arrays) { };
+
+const flattenedArraysOf = function (arrays) {
+  const flattedArrays = arrays.map(function (array) {
+    return array.flat();
+  });
+
+  return flattedArrays;
+};
 
 // sort letters in ["cat", "bat", "rat"] alphabetically => ["act", "abt", "art"]
-const sortedLettersOf = function (strings) { };
+
+const sortedLettersOf = function (strings) {
+  const sortedStrings = strings.map(function (string) {
+    return Array.from(string).sort().join("");
+  });
+
+  return sortedStrings;
+};
 
 // wrap strings in brackets ["apple", "banana"] => ["[apple]", "[banana]"]
-const wrappedStringsOf = function (strings) { };
+
+const wrappedStringsOf = function (strings) {
+  const wrappedStrings = strings.map(function (string) {
+    return "[" + string + "]";
+  });
+
+  return wrappedStrings;
+};
 
 // extract names from [{ name: "Alice" }, { name: "Bob" }] => ["Alice", "Bob"]
-const extractNames = function (objects) { };
+
+const extractNames = function (objects) {
+  const names = objects.map(function (object) {
+    return object.name;
+  });
+
+  return names;
+};
 
 // extract ages from [{ age: 25 }, { age: 30 }] => [25, 30]
-const extractAges = function (objects) { };
+
+const extractAges = function (objects) {
+  const ages = objects.map(function (object) {
+    return object.age;
+  });
+
+  return ages;
+};
 
 // extract the first letters of names from [{ name: "Alice" }, { name: "Bob" }] => ["A", "B"]
-const firstLettersOfNames = function (objects) { };
+
+const firstLettersOfNames = function (objects) {
+  const initialsOfNames = objects.map(function (object) {
+    return object.name[0];
+  });
+
+  return initialsOfNames;
+};
 
 // calculate areas from [{ width: 2, height: 3 }, { width: 4, height: 5 }] => [6, 20]
-const calculateAreas = function (rectangles) { };
+
+const calculateAreas = function (rectangles) {
+  const areas = rectangles.map(function (rectangle) {
+    return rectangle.width * rectangle.height;
+  });
+
+  return areas;
+};
 
 // extract boolean flags from [{ active: true }, { active: false }] => [true, false]
-const extractFlags = function (objects) { };
+
+const extractFlags = function (objects) {
+  const booleanFlags = objects.map(function (object) {
+    return object.active;
+  });
+
+  return booleanFlags;
+};
 
 // concatenate first and last names from [{ firstName: "Alice", lastName: "Smith" }, { firstName: "Bob", lastName: "Brown" }] => ["Alice Smith", "Bob Brown"]
-const fullNames = function (objects) { };
+
+const fullNames = function (objects) {
+  const fullNames = objects.map(function (object) {
+    return [object.firstName, object.lastName].join(" ");
+    //here instead of explicitely using + operator and using ' ' in between,I 
+    //used arrays and join() so that even if a middleName comes in the future, 
+    //I simply put the middleName in the array, a little more flexible ig
+  });
+
+  return fullNames;
+};
 
 // calculate total prices from [{ price: 10, quantity: 2 }, { price: 5, quantity: 4 }] => [20, 20]
 // (price * quantity)
-const totalPrices = function (objects) { };
+
+const totalPrices = function (objects) {
+  const netTotals = objects.map(function (object) {
+    return object.price * object.quantity;
+  });
+
+  return netTotals;
+};
 
 // determine if a person is an adult from [{ name: "Alice", age: 17 }, { name: "Bob", age: 22 }] => [false, true]
 // (age >= 18)
-const isAdult = function (objects) { };
+
+const isAdult = function (objects) {
+  const booleans = objects.map(function (object) {
+    return object.age >= 18;
+  });
+
+  return booleans;
+};
 
 // create abbreviations from [{ city: "New York", country: "USA" }, { city: "Los Angeles", country: "USA" }] => ["NY, USA", "LA, USA"]
 const abbreviations = function (objects) { };
 
 // extract scores for math tests from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [90, 80]
-const mathScores = function (objects) { };
+
+const mathScores = function (objects) {
+  const scores = objects.map(function (object) {
+    return object.scores.math;
+  });
+
+  return scores;
+};
 
 // extract coordinates from [{ x: 1, y: 2 }, { x: 3, y: 4 }] => [[1, 2], [3, 4]]
-const extractCoordinates = function (objects) { };
+
+const extractCoordinates = function (objects) {
+  const coordinates = objects.map(function (object) {
+    return [object.x, object.y];
+  });
+
+  return coordinates;
+};
 
 // extract full name and age from [{ firstName: "Alice", lastName: "Smith", age: 25 }, { firstName: "Bob", lastName: "Brown", age: 30 }] => [["Alice Smith", 25], ["Bob Brown", 30]]
-const fullNameAndAge = function (objects) { };
+
+const fullNameAndAge = function (objects) {
+  const fullNamesAndAge = objects.map(function (object) {
+    return [[object.firstName, object.lastName].join(" "), object.age];
+  });
+
+  return fullNamesAndAge;
+};
 
 // extract scores from [{ name: "Alice", scores: { math: 90, english: 85 } }, { name: "Bob", scores: { math: 80, english: 75 } }] => [[90, 85], [80, 75]]
-const extractScores = function (objects) { };
+
+const extractScores = function (objects) {
+  const scores = objects.map(function ({ scores: { math, english } }) {
+    return [math, english];
+  });
+
+  return scores;
+};
 
 // extract key-value pairs from [{ key: "a", value: 1 }, { key: "b", value: 2 }] => [["a", 1], ["b", 2]]
-const keyValuePairs = function (objects) { };
+
+const keyValuePairs = function (objects) {
+  const keysAndValues = objects.map(function ({ key, value }) {
+    return [key, value];
+  });
+
+  return keysAndValues;
+};
 
 // split full names into first and last names from [{ name: "Alice Smith" }, { name: "Bob Brown" }] => [["Alice", "Smith"], ["Bob", "Brown"]]
-const splitFullNames = function (objects) { };
+
+const splitFullNames = function (objects) {
+  const firstAndLastNames = objects.map(function ({ name }) {
+    const splittedNames = name.split(" ");
+    return splittedNames;
+  });
+
+  return firstAndLastNames;
+};
 
 // normalize scores so they fall between 0 and 1 based on the max score from [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }] => [0.8, 1]
-const normalizeScores = function (objects) { };
+
+const normalizeScores = function (objects) {
+  const normalizedScores = objects.map(function ({ score }) {
+    return score / 100;
+  });
+
+  return normalizedScores;
+};
 
 // calculate percentage contribution of each number in [10, 20, 30] (relative to the total sum) => [16.67, 33.33, 50]
-const percentageContributions = function (numbers) { };
+
+const getSum = function (sum, number) {
+  return sum + number;
+};
+
+const percentageContributions = function (numbers) {
+  const totalSum = numbers.reduce(getSum, 0);
+  return numbers.map(function (number) {
+    return Math.round(((number / totalSum) * 100) * 100) / 100;
+  });
+};
 
 // subtract the smallest number from each number in [3, 8, 1] => [2, 7, 0]
-const subtractMin = function (numbers) { };
+
+const getMin = function (init, number) {
+  return Math.min(init, number);
+};
+
+const subtractMin = function (numbers) {
+  const min = numbers.reduce(getMin, Infinity);
+  return numbers.map(function (number) {
+    return number - min;
+  });
+};
 
 // calculate ranks (1-based, descending) for scores in [{ name: "Alice", score: 80 }, { name: "Bob", score: 100 }, { name: "Charlie", score: 90 }] => [2, 1, 3]
 const calculateRanks = function (objects) { };
