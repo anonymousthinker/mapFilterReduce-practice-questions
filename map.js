@@ -44,23 +44,76 @@ const firstCharactersOf = function (strings) {
 
 // truth values of [0, 1, 2, 3] => [false, true, true, true]
 // Assume non-zero numbers are true, and zero is false
-const truthValuesOf = function (numbers) { };
+
+const truthValuesOf = function (numbers) {
+  const truthValues = numbers.map(function (number) {
+    return number !== 0;
+  });
+
+  return truthValues;
+};
 
 // reverse strings of ["hello", "world"] => ["olleh", "dlrow"]
-const reversedStringsOf = function (strings) { };
 
-// double letters of ["cat", "dog", "bat"] => ["ccaat", "ddoog", "bbaatt"]
-const doubleLettersOf = function (strings) { };
+const reversedStringsOf = function (strings) {
+  const reversedStrings = strings.map(function (string) {
+    const stringInArray = Array.from(string);
+    const reversedArray = stringInArray.reverse();
+    return reversedArray.join("");
+  });
+
+  return reversedStrings;
+};
+
+// double letters of ["cat", "dog", "bat"] => ["ccaatt", "ddoogg", "bbaatt"]
+
+const double = function (value) {
+  return value.repeat(2);
+};
+
+const doubleTheLetters = function (string) {
+  const stringInArray = Array.from(string);
+  const doubledLetters = stringInArray.map(double);
+  return doubledLetters.join("");
+};
+
+const doubleLettersOf = function (strings) {
+  const doubledLetterStrings = strings.map(doubleTheLetters);
+
+  return doubledLetterStrings;
+};
 
 // boolean negation of [true, false, true] => [false, true, false]
-const negatedBooleansOf = function (booleans) { };
+
+const negatedBooleansOf = function (booleans) {
+  const invertedBooleans = booleans.map(function (boolean) {
+    return !boolean;
+  });
+
+  return invertedBooleans;
+};
 
 // character codes of ["a", "b", "c"] => [97, 98, 99]
 // Use the `charCodeAt` method on each string
-const charCodesOf = function (strings) { };
+
+const charCodesOf = function (strings) {
+  const charCodes = strings.map(function (char) {
+    return char.charCodeAt();
+  });
+
+  return charCodes;
+};
 
 // extract domain names from ["user1@gmail.com", "admin@yahoo.com"] => ["gmail.com", "yahoo.com"]
-const domainNamesOf = function (emails) { };
+
+const domainNamesOf = function (emails) {
+  const domains = emails.map(function (email) {
+    const domainStart = email.indexOf("@");
+    return email.slice(domainStart);
+  });
+
+  return domains;
+};
 
 // split words in ["hello world", "goodbye moon"] => [["hello", "world"], ["goodbye", "moon"]]
 const splitWordsOf = function (strings) { };
