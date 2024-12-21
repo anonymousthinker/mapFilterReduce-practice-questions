@@ -1,5 +1,13 @@
 // squares of [1, 2, 3] => [1, 4, 9]
-const squaresOf = function (numbers) { };
+
+const squaresOf = function (numbers) {
+  const squaredNumbers = numbers.map(function (number) {
+    return Math.pow(number, 2);
+    //** is much more readable denoting exponentiation
+  });
+
+  return squaredNumbers; //overly specific long variable name
+};
 
 // lengths of ["apple", "banana", "kiwi"] => [5, 6, 4]
 const lengthsOf = function (strings) { };
