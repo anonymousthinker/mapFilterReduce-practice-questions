@@ -6,17 +6,41 @@ const squaresOf = function (numbers) {
     //** is much more readable denoting exponentiation
   });
 
-  return squaredNumbers; //overly specific long variable name
+  return squaredNumbers;
+  //overly specific long variable name, a better alternative would be "squares"
 };
 
 // lengths of ["apple", "banana", "kiwi"] => [5, 6, 4]
-const lengthsOf = function (strings) { };
+
+const lengthsOf = function (strings) {
+  const lengths = strings.map(function (string) {
+    return string.length;
+  });
+
+  return lengths;
+  //as we are not doing anything with the modified array later, its fine to 
+  //directly return it without storing it in a variable
+};
 
 // uppercase of ["hello", "world"] => ["HELLO", "WORLD"]
-const uppercaseOf = function (strings) { };
+
+const uppercaseOf = function (strings) {
+  const capitals = strings.map(function (string) {
+    return string.toUpperCase();
+  });
+
+  return capitals;
+};
 
 // first characters of ["apple", "banana", "kiwi"] => ["a", "b", "k"]
-const firstCharactersOf = function (strings) { };
+
+const firstCharactersOf = function (strings) {
+  const initials = strings.map(function (string) {
+    return string[0];
+  });
+
+  return initials;
+};
 
 // truth values of [0, 1, 2, 3] => [false, true, true, true]
 // Assume non-zero numbers are true, and zero is false
