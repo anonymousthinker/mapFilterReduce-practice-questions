@@ -1,17 +1,42 @@
 // even numbers [1, 2, 3, 4, 5] => [2, 4]
-const filterEvenNumbers = function (numbers) { };
+
+const filterEvenNumbers = function (numbers) {
+  return numbers.filter(function (number) {
+    return number % 2 === 0;
+  });
+};
 
 // words with more than 5 letters ["apple", "banana", "kiwi", "grape"] => ["banana"]
-const filterLongWords = function (words) { };
+
+const filterLongWords = function (words) {
+  return words.filter(function (word) {
+    return word.length > 5;
+  });
+};
 
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
-const filterAdults = function (people) { };
+
+const filterAdults = function (people) {
+  return people.filter(function ({ age }) {
+    return age > 30;
+  });
+};
 
 // active users [{username: "alice", active: true}, {username: "bob", active: false}] => [{username: "alice", active: true}]
-const filterActiveUsers = function (users) { };
+
+const filterActiveUser = function (users) {
+  return users.filter(function ({ active }) {
+    return active;
+  });
+};
 
 // numbers greater than 10 [5, 12, 7, 18, 3] => [12, 18]
-const filterNumbersGreaterThanTen = function (numbers) { };
+
+const filterNumbersGreaterThanTen = function (numbers) {
+  return numbers.filter(function (number) {
+    return number > 10;
+  });
+};
 
 // books with more than 200 pages [{title: "Book 1", pages: 150}, {title: "Book 2", pages: 250}] => [{title: "Book 2", pages: 250}]
 const filterLongBooks = function (books) { };
@@ -221,7 +246,7 @@ const filterActiveUsers = function (users, minFollowers, daysAgo) { };
 const filterPostsByHashtags = function (posts, trendingHashtags) { };
 
 // Filter users who have shared at least one post that received a specific number of likes [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}] => [{user: {name: "Lucy", posts: [{title: "Post 1", likes: 500}, {title: "Post 2", likes: 100}]}}]
-const filterUsersByPostLikes = function (users, minLikes) { };
+// const filterUsersByPostLikes = function (users, minLikes) { };
 
 // Filter posts that have a certain number of comments and are from a specific location [{post: {title: "Post 1", comments: 150, location: "Paris"}}] => [{post: {title: "Post 1", comments: 150, location: "Paris"}}]
 const filterPostsByCommentsAndLocation = function (posts, minComments, location) { };
@@ -281,17 +306,38 @@ const filterStringsBySubstringMembership = function (strings, criteria) { };
 // Filter numbers from the first array that fall within a range specified by a pair in the second array
 // Input: [1, 2, 3, 4, 5], [[2, 4]]
 // Output: [2, 3, 4]
-const filterByRange = function (numbers, ranges) { };
+
+const filterByRange = function (numbers, ranges) {
+  return numbers.filter(function (number) {
+    const start = ranges[0][0];
+    const end = ranges[0][1];
+    return number >= start && number <= end;
+  });
+};
 
 // Filter numbers from the first array that are present in the second array and are even
 // Input: [1, 2, 3, 4, 5], [2, 4, 6]
 // Output: [2, 4]
-const filterEvenNumbersByMembership = function (numbers, criteria) { };
+
+const isEven = function (number) {
+  return number % 2 === 0;
+};
+
+const filterEvenNumbersByMembership = function (numbers, criteria) {
+  return numbers.filter(function (number) {
+    return criteria.includes(number) && isEven(number);
+  });
+};
 
 // Find countries that exist based on a lookup object with country names as keys and existence status as values.
 // Input: ["India", "USA", "Iran"], { "India": "exists", "USA": "does not exist", "Iran": "exists" }
 // Output: ["India", "Iran"]
-const findCountriesThatExist = function (countries, lookup) { };
+
+const findCountriesThatExist = function (countries, lookup) {
+  return countries.filter(function (country) {
+    return lookup[country] === "exists";
+  });
+};
 
 // Find numbers that are marked as 'valid' in the lookup object.
 // Input: [10, 20, 30, 40], {10: "valid", 20: "invalid", 30: "valid", 40: "valid"}
@@ -321,19 +367,40 @@ const findHighScoringStudents = function (students, lookup) { };
 // Find employees who have been at the company for more than 5 years based on the lookup object.
 // Input: ["John", "Alice", "Bob"], { "John": { yearsAtCompany: 6 }, "Alice": { yearsAtCompany: 4 }, "Bob": { yearsAtCompany: 7 } }
 // Output: ["John", "Bob"]
-const findLongTermEmployees = function (employees, lookup) { };
+
+const findLongTermEmployees = function (employees, lookup) {
+  return employees.filter(function (employee) {
+    return lookup[employee].yearsAtCompany > 5;
+  });
+};
 
 // Find cities with a population greater than a threshold provided in the lookup object.
 // Input: ["London", "Paris", "Tokyo"], { "London": { population: 9000000 }, "Paris": { population: 2200000 }, "Tokyo": { population: 14000000 } }
 // Output: ["London", "Tokyo"]
-const findLargeCities = function (cities, lookup) { };
+
+const findLargeCities = function (cities, lookup) {
+  const threshold = 5000000;
+  return cities.filter(function (city) {
+    return lookup[city].population > threshold;
+  });
+};
 
 // Find items in an inventory whose quantity is greater than 10 based on the lookup object.
 // Input: ["item1", "item2", "item3"], { "item1": { quantity: 15 }, "item2": { quantity: 5 }, "item3": { quantity: 20 } }
 // Output: ["item1", "item3"]
-const findInStockItems = function (items, lookup) { };
+
+const findInStockItems = function (items, lookup) {
+  return items.filter(function (item) {
+    return lookup[item].quantity > 10;
+  });
+};
 
 // Find animals whose habitat matches the required type from the lookup object.
 // Input: ["Lion", "Elephant", "Shark"], { "Lion": { habitat: "Jungle" }, "Elephant": { habitat: "Jungle" }, "Shark": { habitat: "Ocean" } } , "Jungle"
 // Output: ["Lion", "Elephant"]
-const findAnimalsByHabitat = function (animals, lookup) { };
+
+const findAnimalsByHabitat = function (animals, lookup) {
+  return animals.filter(function (animal) {
+    return lookup[animal].habitat === "Jungle";
+  });
+};
