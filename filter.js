@@ -10,13 +10,6 @@ const isStringLongerThan = function (threshold) {
   };
 };
 
-const compareObjects = function (key, comparator, threshold) {
-  const compare = comparator(threshold);
-  return function (object) {
-    return compare(object[key]);
-  };
-};
-
 //Above are the functions that will be reused...
 
 // even numbers [1, 2, 3, 4, 5] => [2, 4]
@@ -38,7 +31,9 @@ console.log(filterLongWords(["apple", "banana", "kiwi", "grape"]));
 // people older than 30 [{name: "Alice", age: 25}, {name: "Bob", age: 35}] => [{name: "Bob", age: 35}]
 
 const filterAdults = function (people) {
-  return people.filter(compareObjects("age", isGreaterThan, 30));
+  return people.filter(function ({ age }) {
+    return age > 30;
+  });
 };
 
 console.log(filterAdults([{ name: "Alice", age: 25 }, { name: "Bob", age: 35 }]));
